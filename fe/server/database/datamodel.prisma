@@ -1,0 +1,12 @@
+    type contact {
+      id: ID! @id
+      name: String!
+      email: String!
+      number: String!
+      createdAt: DateTime! @createdAt
+    }
+    type User {
+      id: ID! @id
+      email: String! @unique
+      password: String!
+    }

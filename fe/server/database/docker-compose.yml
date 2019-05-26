@@ -1,0 +1,17 @@
+version: '3'
+services:
+  prisma:
+    image: prismagraphql/prisma:1.28
+    restart: always
+    ports:
+    - "4466:4466"
+    environment:
+      PRISMA_CONFIG: |
+        port: 4466
+        managementApiSecret: my-secret86
+        databases:
+          default:
+            connector: mongo
+            database: protectwebDBs
+            uri: >-
+              mongodb+srv://splash:db696915@cluster0-affek.mongodb.net/test?retryWrites=true

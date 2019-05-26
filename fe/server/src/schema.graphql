@@ -1,0 +1,30 @@
+# import contact from "/generated/prisma.graphql"
+scalar Upload
+
+    type Query {
+      contact(id: ID!): contact!
+      contacts: [contact!]!
+      me: User!
+    }
+
+    type Mutation {
+      signup(email: String!, password: String!): AuthPayload!
+      login(email: String!, password: String!): AuthPayload!
+
+      createcontact(
+       name: String!
+       email: String!
+       number: String!
+      ): contact!
+
+    }
+
+    type AuthPayload {
+      token: String!
+      user: User!
+    }
+
+    type User {
+      id: ID!
+      email: String!
+    }
