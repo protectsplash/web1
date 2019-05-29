@@ -2,6 +2,9 @@ const express = require('express')
 const { GraphQLServer } = require('graphql-yoga')
 const { Prisma } = require('prisma-binding')
 const resolvers = require('./resolvers')
+const dotenv = require('dotenv')
+dotenv.config()
+const fs = require('fs')
 const server = new GraphQLServer({
   typeDefs: 'src/schema.graphql',
   resolvers,
@@ -20,4 +23,5 @@ const server = new GraphQLServer({
   }),
 })
 server.express.use('/images', express.static("images"))
-server.start(() => console.log('Server is running on http://localhost:4000'))
+server.start(({port}) => console.log(`Server is running on http://localhost:${port}`)
+  )

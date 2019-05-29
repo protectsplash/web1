@@ -13,5 +13,4 @@ services:
           default:
             connector: mongo
             database: protectwebDBs
-            uri: >-
-              mongodb+srv://splash:db696915@cluster0-affek.mongodb.net/test?retryWrites=true
+            uri: 'mongodb+srv://splash:db696915@protectweb-affek.mongodb.net/test?retryWrites=true'

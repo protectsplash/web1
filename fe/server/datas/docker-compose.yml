@@ -1,0 +1,28 @@
+version: '3'
+services:
+  prisma:
+    image: prismagraphql/prisma:1.28
+    restart: always
+    ports:
+    - "8752:8752"
+    environment:
+      PRISMA_CONFIG: |
+        port: 8752
+        # uncomment the next line and provide the env var PRISMA_MANAGEMENT_API_SECRET=my-secret to activate cluster security
+        # managementApiSecret: my-secret
+        databases:
+          db:
+            connector: mongo
+            uri: mongodb+srv://splash:db696915@cluster0-affek.mongodb.net/test?retryWrites=true
+  mongo:
+    image: mongo:3.6
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: splash
+      MONGO_INITDB_ROOT_PASSWORD: db69696915
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo:/var/lib/mongo
+volumes:
+  mongo: ~
